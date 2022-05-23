@@ -302,15 +302,39 @@ window.addEventListener('load', () => {
 
 
   window.onload = () => {
-    document.getElementById('contact_form').addEventListener('submit', function(event) {
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
         event.preventDefault();
-        // emailjs.send("Personal_Website_Service","contact_form_customer",this)
-        //     .then((message) => {
-        //         alert(message);
-        //     },(error) => {
-        //         alert(error);
-        //    });
+        let name = document.getElementById('contact-name').value;
+        let params = {
+          to_name : document.getElementById('contact-name').value,
+          reply_to : document.getElementById('contact-email').value,
+          message : document.getElementById('contact-message').value
+        }
+        emailjs.send("Personal_Website_Service","contact_form",params)
+            .then((message) => {
+                alert("Thank you "+name+".\nPlease check your email. Due to some issues, our mail might be in 'spam/updates/promotions/social' sections.");
+            },(error) => {
+                alert("Sorry!, your response has not reached!.");
+                console.log(error);
+           });
+    });
+    document.getElementById('testimony-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      let name = document.getElementById('testimony-name').value;
+      let params = {
+        to_name : document.getElementById('testimony-name').value,
+        reply_to : document.getElementById('testimony-email').value,
+        message : document.getElementById('testimony-message').value
+      }
+      emailjs.send("Personal_Website_Service","testimony_form",params)
+          .then((message) => {
+              alert("Thank you "+name+".\nPlease check your email. Due to some issues, our mail might be in spam/updates/promotions/social sections.\nIt might take few hours to reflect your testimony in website.");
+          },(error) => {
+            alert("Sorry!, your response has not reached!.");
+            console.log(error);
+         });
     });
   }
+  
 
 
