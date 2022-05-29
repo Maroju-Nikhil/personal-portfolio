@@ -310,13 +310,18 @@ window.addEventListener('load', () => {
           reply_to : document.getElementById('contact-email').value,
           message : document.getElementById('contact-message').value
         }
+        document.getElementById('contact-form').reset();
         emailjs.send("Personal_Website_Service","contact_form",params)
             .then((message) => {
+                document.getElementById('contact-form').reset();
                 alert("Thank you "+name+".\nPlease check your email. Due to some issues, our mail might be in 'spam/updates/promotions/social' sections.");
+
             },(error) => {
+                document.getElementById('contact-form').reset();
                 alert("Sorry!, your response has not reached!.");
                 console.log(error);
            });
+
     });
     document.getElementById('testimony-form').addEventListener('submit', function(event) {
       event.preventDefault();
@@ -328,8 +333,10 @@ window.addEventListener('load', () => {
       }
       emailjs.send("Personal_Website_Service","testimony_form",params)
           .then((message) => {
+              document.getElementById('testimony-form').reset();
               alert("Thank you "+name+".\nPlease check your email. Due to some issues, our mail might be in spam/updates/promotions/social sections.\nIt might take few hours to reflect your testimony in website.");
           },(error) => {
+            document.getElementById('testimony-form').reset();
             alert("Sorry!, your response has not reached!.");
             console.log(error);
          });
