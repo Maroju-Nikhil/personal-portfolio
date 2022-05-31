@@ -316,11 +316,18 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
+@media (min-width: 1204px) {
+  .about .row .row{
+    padding-left: 3%;
+  }
+}
+
 .about .content h3 {
   font-weight: 700;
   font-size: 26px;
   color: #173b6c;
 }
+
 .about .row img{
     border-radius: 10px;
 }
